@@ -1,0 +1,32 @@
+{
+  "contacts": "Kontaktlar",
+  "history": "Tarix",
+  "New":"Yangi",
+  "saved": "Saqlanganlar",
+  "profile": "Profil",
+  "mon": "Du",
+  "tue": "Se",
+  "wed": "Chor",
+  "thu":"Pay" ,
+  "fri": "Ju",
+  "sat": "Shan",
+  "sun": "Yak",
+  "january": "Yanvar",
+  "february": "Fevral",
+  "march": "Mart",
+  "april": "Aprel",
+  "may": "May",
+  "june": "Iyun",
+  "july": "Iyul",
+  "august": "Avgust",
+  "september": "Sentabr",
+  "october": "Oktabr",
+  "november": "Noyabr",
+  "december": "Dekabr",
+  "choose_language": "Tilni tanlang",
+  "cancel": "yo'q",
+  "done": "Ha",
+  "what_do_you_want_to_save": "Nima saqlashni hohlaysiz?"
+
+
+}

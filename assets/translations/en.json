@@ -1,0 +1,32 @@
+{
+  "contacts": "Contacts",
+  "history": "History",
+  "New":"New",
+  "saved": "Saved",
+  "profile": "Profile",
+  "mon": "Mon",
+  "tue": "Tue",
+  "wed": "Wed",
+  "thu":"Thu" ,
+  "fri": "Fri",
+  "sat": "Sat",
+  "sun": "Sun",
+  "january": "January",
+  "february": "February",
+  "march": "March",
+  "april": "April",
+  "may": "May",
+  "june": "June",
+  "july": "July",
+  "august": "August",
+  "september": "September",
+  "october": "October",
+  "november": "November",
+  "december": "December",
+  "choose_language": "Choose a language",
+  "cancel": "Cancel",
+  "done": "Done",
+  "what_do_you_want_to_save": "what do you want to save?"
+
+
+}
