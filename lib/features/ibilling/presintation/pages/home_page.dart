@@ -49,7 +49,6 @@ class _HomePageState extends State<HomePage> {
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent),
           child: BottomNavigationBar(
-
             backgroundColor: AppColors.darkest,
             unselectedItemColor: Color(0xFFA6A6A6),
             showUnselectedLabels: true,

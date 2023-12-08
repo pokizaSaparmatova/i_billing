@@ -1,0 +1,1 @@
+enum Entities { Jismoniy, Yuridik }

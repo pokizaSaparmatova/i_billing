@@ -14,3 +14,14 @@ class AddInvoiceInitialEvent extends AddPageEvent {
 
   AddInvoiceInitialEvent(this.title);
 }
+class AddContactEvent extends AddPageEvent{
+  final String entities;
+  final String name;
+  final String organization;
+  final String inn;
+  final String status;
+
+  AddContactEvent(this.entities, this.name, this.organization, this.inn, this.status);
+
+
+}
