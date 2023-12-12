@@ -47,10 +47,9 @@ dependencies:
   # Functional Programming in Dart. Purify your Dart code using efficient immutable data structures,
   # monads, lenses and other FP tools.
   dartz: ^0.10.1
-  firebase_core: ^2.24.1
-
-
-
+  firebase_core: ^2.24.2
+  chips_choice: ^3.0.1
+  intl: ^0.18.1
 
 
 

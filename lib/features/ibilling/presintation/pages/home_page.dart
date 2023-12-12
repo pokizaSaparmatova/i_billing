@@ -106,13 +106,13 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HomeProvider extends ChangeNotifier {
-  var _index = 0;
-
-  void onChangedTab(int index) {
-    _index = index;
-    notifyListeners();
-  }
-
-  int get index => _index;
-}
+// class HomeProvider extends ChangeNotifier {
+//   var _index = 0;
+//
+//   void onChangedTab(int index) {
+//     _index = index;
+//     notifyListeners();
+//   }
+//
+//   int get index => _index;
+// }

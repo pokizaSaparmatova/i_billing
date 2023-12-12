@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:ibilling/features/ibilling/data/datasource/local_datasource/local_datasource.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/crud_contact.dart';
+import 'package:ibilling/features/ibilling/domain/usecases/get_contact.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/home_page.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/new_page/bloc/add_page_bloc.dart';
+import 'features/ibilling/presintation/pages/contact_page/bloc/contact_bloc.dart';
 import 'features/ibilling/presintation/pages/profile_page/bloc/profile_bloc.dart';
 import 'firebase_options.dart';
 
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
             create: (BuildContext context) =>
                 ProfileBloc(localDataSource: sl())),
         BlocProvider<AddPageBloc>(
-            create: (BuildContext context) => AddPageBloc(usecase: sl()))
+            create: (BuildContext context) => AddPageBloc(usecase: sl(),)),
       ],
       child: Portal(
         child: MaterialApp(

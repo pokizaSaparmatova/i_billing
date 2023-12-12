@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ibilling/core/error/failures.dart';
@@ -13,9 +14,12 @@ class CrudContact implements UseCase<void, Params> {
 
   @override
   Future<Either<Failure, void>> call(Params params) async {
-    return await repository.addContact(params.entities, params.name,
-        params.organization, params.inn, params.status);
+    print("usecaseee:${params.inn}");
+    return await repository.addContact( params.name,params.entities,
+        params.organization, params.inn, params.status,params.date);
   }
+
+
 }
 
 class Params extends Equatable {
@@ -24,9 +28,10 @@ class Params extends Equatable {
   final String organization;
   final String inn;
   final String status;
+  final DateTime date;
 
-  Params(this.entities, this.name, this.organization, this.inn, this.status);
+  Params(this.entities, this.name, this.organization, this.inn, this.status,this.date);
 
   @override
-  List<Object> get props => [entities, name, organization, inn, status];
+  List<Object> get props => [entities, name, organization, inn, status,date];
 }

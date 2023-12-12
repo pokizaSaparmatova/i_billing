@@ -10,6 +10,7 @@ class AddPageState extends Equatable {
   final String status;
   final PageStatuses pageStatuses;
   final String errorMessage;
+  final DateTime? date;
 
   const AddPageState({
     this.title = "",
@@ -20,17 +21,22 @@ class AddPageState extends Equatable {
     this.organization = "",
     this.pageStatuses = PageStatuses.initial,
     this.errorMessage = "",
+    this.date = null,
+
   });
 
-  AddPageState copyWith(
-      {String? title,
-      String? entities,
-      String? name,
-      String? organization,
-      String? inn,
-      String? status,
-      PageStatuses? pageStatuses,
-      String? errorMessage}) {
+  AddPageState copyWith({
+    String? title,
+    String? entities,
+    String? name,
+    String? organization,
+    String? inn,
+    String? status,
+    PageStatuses? pageStatuses,
+    String? errorMessage,
+    DateTime? date,
+
+  }) {
     return AddPageState(
         title: title ?? this.title,
         entities: entities ?? this.entities,
@@ -39,11 +45,13 @@ class AddPageState extends Equatable {
         inn: inn ?? this.inn,
         status: status ?? this.status,
         pageStatuses: pageStatuses ?? this.pageStatuses,
-        errorMessage: errorMessage ?? this.errorMessage);
+        errorMessage: errorMessage ?? this.errorMessage,
+        date: date ?? this.date,
+        );
   }
 
   @override
-  List<Object?> get props => [title, entities, name, organization, inn, status];
+  List<Object?> get props => [title, entities, name, organization, inn, status,];
 }
 
 enum PageStatuses { initial, loading, success, fail }
