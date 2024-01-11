@@ -5,11 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/new_page/bloc/add_page_bloc.dart';
 
-import '../../../../core/utils/app_colors.dart';
+import '../../../../assets/app_colors.dart';
 
 class CreateDialog extends StatefulWidget {
+  final Function (int) onTabChanged;
   const CreateDialog({
-    Key? key,
+    Key? key, required this.onTabChanged,
   }) : super(key: key);
 
   @override
@@ -18,8 +19,18 @@ class CreateDialog extends StatefulWidget {
 
 class _CreateDialogState extends State<CreateDialog> {
   @override
+  void initState() {
+    int i=0;
+    print("initDialog${i++}");
+    context.read<AddPageBloc>().add(ClearStateEvent());
+    context.read<AddPageBloc>().add(InitialEvent(""));
+
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddPageBloc,AddPageState>(builder: (context,state){
+
       return    Dialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           elevation: 0,
@@ -49,6 +60,7 @@ class _CreateDialogState extends State<CreateDialog> {
                       context
                           .read<AddPageBloc>()
                           .add(AddContactInitialEvent("contact"));
+                      widget.onTabChanged(5);
                       Navigator.pop(context,"contact");
 
                     },
@@ -87,7 +99,9 @@ class _CreateDialogState extends State<CreateDialog> {
                       context
                           .read<AddPageBloc>()
                           .add(AddInvoiceInitialEvent("invoice"));
+                      widget.onTabChanged(6);
                       Navigator.pop(context, "invoice");
+
                     },
                     child: Container(
                       width: double.infinity,

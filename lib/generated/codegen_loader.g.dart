@@ -42,7 +42,11 @@ class CodegenLoader extends AssetLoader{
   "choose_language": "Choose a language",
   "cancel": "Cancel",
   "done": "Done",
-  "what_do_you_want_to_save": "what do you want to save?"
+  "what_do_you_want_to_save": "what do you want to save?",
+  "dateOfBirth": "Date of birth",
+  "phoneNumber": "Phone number:",
+  "applyFilters": "Apply filters",
+  "newContact": "New contract"
 };
 static const Map<String,dynamic> uz = {
   "contacts": "Kontaktlar",
@@ -72,7 +76,11 @@ static const Map<String,dynamic> uz = {
   "choose_language": "Tilni tanlang",
   "cancel": "yo'q",
   "done": "Ha",
-  "what_do_you_want_to_save": "Nima saqlashni hohlaysiz?"
+  "what_do_you_want_to_save": "Nima saqlashni hohlaysiz?",
+  "dateOfBirth": "Tug'ilgan sana",
+  "phoneNumber": "Telifon raqam",
+  "applyFilters": "Filterni tasdiqlash",
+  "newContact": "Yangi kontakt"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uz": uz};
 }

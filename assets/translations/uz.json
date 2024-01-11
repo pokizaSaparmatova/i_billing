@@ -26,7 +26,11 @@
   "choose_language": "Tilni tanlang",
   "cancel": "yo'q",
   "done": "Ha",
-  "what_do_you_want_to_save": "Nima saqlashni hohlaysiz?"
+  "what_do_you_want_to_save": "Nima saqlashni hohlaysiz?",
+  "dateOfBirth": "Tug'ilgan sana",
+  "phoneNumber": "Telifon raqam",
+  "applyFilters": "Filterni tasdiqlash",
+  "newContact": "Yangi kontakt"
 
 
 }

@@ -1,18 +1,20 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../models/contact_model.dart';
+
 abstract class LocalDataSource {
   Future<String?> getSelectedLanguage();
 
   Future<void> saveSelectedLanguage(String languageCode);
 
-  String getNumber();
-
-  void saveNumber(String number);
+  bool getBool(ContactModel contactModel);
+  void setBool(ContactModel contactModel);
 }
 
 class SharedPreferencesLocalDataSource implements LocalDataSource {
   static const String selectedLanguageKey = 'selectedLanguage';
-  static const String numbers = 'number';
+  static const String numbersKey = 'number';
+
   final SharedPreferences sharedPreferences;
 
   SharedPreferencesLocalDataSource(this.sharedPreferences);
@@ -31,16 +33,22 @@ class SharedPreferencesLocalDataSource implements LocalDataSource {
         "shareddddddSavedd:${sharedPreferences.getString(selectedLanguageKey) ?? "en"}");
   }
 
+
+
   @override
-  String getNumber() {
-    print("shareddddddddd:${sharedPreferences.getString(numbers)??""}");
-    return sharedPreferences.getString(numbers)??"";
+  void setBool(ContactModel contactModel) {
+   sharedPreferences.setBool("${contactModel.name}", contactModel.isSaved);
+   print("pressLocal:${contactModel.isSaved}");
   }
 
   @override
-  void saveNumber(String number) {
-  sharedPreferences.setString(numbers, number);
-  print("shareddddddddd:${sharedPreferences.getString(numbers)??""}");
+  bool getBool(ContactModel contactModel) {
+    return sharedPreferences.getBool(contactModel.name)??false;
   }
+
+
+
+
+
 
 }
