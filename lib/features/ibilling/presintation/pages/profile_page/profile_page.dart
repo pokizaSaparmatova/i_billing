@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ibilling/core/utils/app_colors.dart';
+import 'package:ibilling/assets/app_colors.dart';
 import 'package:ibilling/features/ibilling/presintation/widgets/language_dialog.dart';
 import 'package:ibilling/generated/locale_keys.g.dart';
 
@@ -66,10 +66,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(
                   height: 22,
                 ),
-                const Row(
+                Row(
                   children: [
                     Text(
-                      "Date of birth:",
+                     "dateOfBirth".tr(),
                       style: TextStyle(
                         color: Color(0xFFE6E6E6),
                         fontSize: 14,
@@ -91,10 +91,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 SizedBox(
                   height: 15,
                 ),
-                const Row(
+                 Row(
                   children: [
                     Text(
-                      "Phone number:",
+                     "phoneNumber".tr(),
                       style: TextStyle(
                         color: Color(0xFFE6E6E6),
                         fontSize: 14,

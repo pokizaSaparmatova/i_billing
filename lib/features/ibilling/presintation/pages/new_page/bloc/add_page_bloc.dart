@@ -1,8 +1,12 @@
+
+
+import 'dart:ui';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import '../../../../../../core/error/failures.dart';
-import '../../../../domain/usecases/crud_contact.dart';
+import '../../../../domain/usecases/add_contract.dart';
 import '../../../../domain/usecases/get_contact.dart';
 
 part 'add_page_event.dart';
@@ -36,13 +40,25 @@ class AddPageBloc extends Bloc<AddPageEvent, AddPageState> {
       emit(state.copyWith(pageStatuses: PageStatuses.loading));
       final failureOrSuccess = await usecase(Params(event.name, event.entities,
           event.organization, event.inn, event.status,event.date));
+
       failureOrSuccess.fold(
           (failure) => emit(state.copyWith(
               pageStatuses: PageStatuses.fail,
               errorMessage: _mapFailureMessage(failure))),
-          (contact) async =>
-              emit(state.copyWith(pageStatuses: PageStatuses.success)));
+          (contact){
+            emit(state.copyWith(pageStatuses: PageStatuses.success));
+            event.onSuccess();
+          });
     });
+    on<SetInitialStateEvent>((event, emit) async {
+      emit(state.copyWith(pageStatuses: PageStatuses.initial));
+      print("titleeee:${state.title}");
+    });
+    on<ClearStateEvent>((event, emit) async {
+      emit(state.copyWith(entities: "",organization: "",name:"",inn: "",status: "",));
+      print("titleeee:${state.entities}");
+    });
+
 
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/utils/app_colors.dart';
+import '../../../../assets/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String title;

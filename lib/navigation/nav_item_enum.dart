@@ -1,0 +1,1 @@
+enum NavItemEnum { contracts, history, add, saved, profile,newContact,newInvoice }

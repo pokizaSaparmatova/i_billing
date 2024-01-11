@@ -24,7 +24,8 @@ dependencies:
   #localization
   easy_localization: ^3.0.3
 
-
+  #expandable:
+  expandable_widgets: ^1.0.3+1
 
   #cloud_firestore
   cloud_firestore: ^4.13.2
@@ -43,6 +44,8 @@ dependencies:
   flutter_portal: ^1.1.4
 
   keyboard_dismisser: ^3.0.0
+
+  rxdart: ^0.27.7
 
   # Functional Programming in Dart. Purify your Dart code using efficient immutable data structures,
   # monads, lenses and other FP tools.

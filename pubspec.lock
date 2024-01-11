@@ -153,6 +153,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.5"
+  expandable_widgets:
+    dependency: "direct main"
+    description:
+      name: expandable_widgets
+      sha256: "4c533af4056a529b341977566700a7fab34f76f33510c95e4416ab38451cfa12"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3+1"
   fake_async:
     dependency: transitive
     description:
@@ -405,6 +413,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+  rxdart:
+    dependency: "direct main"
+    description:
+      name: rxdart
+      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.27.7"
   shared_preferences:
     dependency: "direct main"
     description:

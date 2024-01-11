@@ -11,32 +11,34 @@ class AddPageState extends Equatable {
   final PageStatuses pageStatuses;
   final String errorMessage;
   final DateTime? date;
+  final String selectedText;
+  final String currentText;
 
-  const AddPageState({
-    this.title = "",
-    this.entities = "",
-    this.name = "",
-    this.inn = "",
-    this.status = "",
-    this.organization = "",
-    this.pageStatuses = PageStatuses.initial,
-    this.errorMessage = "",
-    this.date = null,
+  const AddPageState(
+      {this.title = "",
+      this.entities = "",
+      this.name = "",
+      this.inn = "",
+      this.status = "",
+      this.organization = "",
+      this.pageStatuses = PageStatuses.initial,
+      this.errorMessage = "",
+      this.date ,
+      this.selectedText = "",
+      this.currentText = ""});
 
-  });
-
-  AddPageState copyWith({
-    String? title,
-    String? entities,
-    String? name,
-    String? organization,
-    String? inn,
-    String? status,
-    PageStatuses? pageStatuses,
-    String? errorMessage,
-    DateTime? date,
-
-  }) {
+  AddPageState copyWith(
+      {String? title,
+      String? entities,
+      String? name,
+      String? organization,
+      String? inn,
+      String? status,
+      PageStatuses? pageStatuses,
+      String? errorMessage,
+      DateTime? date,
+      String? selectedText,
+      String? currentText}) {
     return AddPageState(
         title: title ?? this.title,
         entities: entities ?? this.entities,
@@ -47,11 +49,18 @@ class AddPageState extends Equatable {
         pageStatuses: pageStatuses ?? this.pageStatuses,
         errorMessage: errorMessage ?? this.errorMessage,
         date: date ?? this.date,
-        );
+        selectedText: selectedText ?? this.selectedText,
+        currentText: currentText ?? this.currentText);
   }
 
   @override
-  List<Object?> get props => [title, entities, name, organization, inn, status,];
+  // TODO: implement props
+  List<Object?> get props => [
+    title,entities,name,organization,inn,status,pageStatuses,errorMessage,date,selectedText,currentText,selectedText,
+  ];
+
+
+
 }
 
 enum PageStatuses { initial, loading, success, fail }

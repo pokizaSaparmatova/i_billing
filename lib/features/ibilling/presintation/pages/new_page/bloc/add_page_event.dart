@@ -22,14 +22,16 @@ class AddContactEvent extends AddPageEvent {
   final String inn;
   final String status;
   final DateTime date;
+  final VoidCallback onSuccess;
+
 
   AddContactEvent(
-      { required this.entities,
+      {required this.entities,
       required this.name,
       required this.organization,
       required this.inn,
       required this.status,
-      required this.date});
+      required this.date,required this.onSuccess});
 }
 
 class InitialEvent extends AddPageEvent {
@@ -38,4 +40,13 @@ class InitialEvent extends AddPageEvent {
   InitialEvent(this.title);
 }
 
+class SetInitialStateEvent extends AddPageEvent {
+  final String title;
 
+  SetInitialStateEvent(this.title);
+}
+
+class ClearStateEvent extends AddPageEvent {
+
+
+}

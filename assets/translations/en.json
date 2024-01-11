@@ -26,7 +26,11 @@
   "choose_language": "Choose a language",
   "cancel": "Cancel",
   "done": "Done",
-  "what_do_you_want_to_save": "what do you want to save?"
+  "what_do_you_want_to_save": "what do you want to save?",
+  "dateOfBirth": "Date of birth",
+  "phoneNumber": "Phone number:",
+"applyFilters": "Apply filters",
+  "newContact": "New contract"
 
 
 }

@@ -6,30 +6,33 @@ class ContactModel {
   final String organization;
   final String inn;
   final String status;
-  final Timestamp date;
+  final DateTime date;
   final String number;
+  bool isSaved;
 
-  ContactModel(
-      {required this.entity,
-      required this.name,
-      required this.organization,
-      required this.inn,
-      required this.status,
-      required this.date,
-        required this.number
-      });
+  ContactModel({
+    required this.entity,
+    required this.name,
+    required this.organization,
+    required this.inn,
+    required this.status,
+    required this.date,
+    required this.number,
+    required this.isSaved,
+  });
 
   // Factory constructor to create a ContactModel instance from a Json (e.g., Firestore document)
-  factory ContactModel.fromJson(Map<String, dynamic> json,String docId) {
+  factory ContactModel.fromJson(Map<String, dynamic> json, String docId) {
     return ContactModel(
-        entity: json['entity'] ?? '',
-        name: json['name'] ?? '',
-        organization: json['organization'] ?? '',
-        inn: json['inn'] ?? '',
-        status: json['status'] ?? '',
-        //date: (json['date'] as Timestamp).toDate(),
-        date: (json['date'] as Timestamp),
-      number: docId
+      entity: json['entity'] ?? '',
+      name: json['name'] ?? '',
+      organization: json['organization'] ?? '',
+      inn: json['inn'] ?? '',
+      status: json['status'] ?? '',
+      //date: (json['date'] as Timestamp).toDate(),
+      date: (json['date'] as Timestamp).toDate(),
+      number: docId,
+      isSaved: json['isSaved'] ?? false,
     );
   }
 
@@ -42,7 +45,8 @@ class ContactModel {
       'inn': inn,
       'status': status,
       'date': date,
-      'number':number
+      'number': number,
+      'isSaved': isSaved,
     };
   }
 }
