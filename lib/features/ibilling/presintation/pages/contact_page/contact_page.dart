@@ -79,7 +79,6 @@ class _ContactPageState extends State<ContactPage>
   }
   Future<void> _refresh(DateTime dateTime) async {
 
-    print("selectedDate:${selectedDate}");
     context
         .read<ContactBloc>()
         .add(GetAllContractsEvent(dateTime: dateTime));
@@ -118,7 +117,6 @@ class _ContactPageState extends State<ContactPage>
     // Handle Sunday separately
     currentDateSelectedIndex = (weekday == 7) ? 0 : weekday % 7;
 
-    print("currentDate:${selectedDate.weekday}");
     if (isChipChanged) {
       context
           .read<ContactBloc>()
@@ -126,7 +124,7 @@ class _ContactPageState extends State<ContactPage>
     }
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     )..repeat();
     _animation = IntTween(begin: 0, end: 2).animate(_controller);
 
@@ -185,7 +183,7 @@ class _ContactPageState extends State<ContactPage>
                 // showSearch(context: context, delegate: CustomSearchDelegate());
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SearchPage()),
+                  MaterialPageRoute(builder: (context) => const SearchPage()),
                 );
               },
               child: Padding(
@@ -219,9 +217,7 @@ class _ContactPageState extends State<ContactPage>
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                listOfMonths[selectedDate.month - 1] +
-                                    ", " +
-                                    selectedDate.year.toString(),
+                                "${listOfMonths[selectedDate.month - 1]}, ${selectedDate.year}",
                                 style: const TextStyle(
                                   color: Color(0xFFDADADA),
                                   fontSize: 18,
@@ -239,8 +235,7 @@ class _ContactPageState extends State<ContactPage>
                                       onTap: () {
                                         setState(() {
                                           selectedDate = selectedDate
-                                              .subtract(Duration(days: 7));
-                                          print("selectedDate:${selectedDate}");
+                                              .subtract(const Duration(days: 7));
                                         });
                                       },
                                       child: Padding(
@@ -261,8 +256,7 @@ class _ContactPageState extends State<ContactPage>
                                     onTap: () {
                                       setState(() {
                                         selectedDate = selectedDate
-                                            .add(Duration(days: 7));
-                                        print("selectedDate:${selectedDate}");
+                                            .add(const Duration(days: 7));
                                       });
                                     },
                                     child: Padding(
@@ -295,22 +289,17 @@ class _ContactPageState extends State<ContactPage>
                             itemBuilder: (BuildContext context, index) {
                               int daysToAdd =
                                   index - (selectedDate.weekday - 1);
-                              print("daysToAdd:$daysToAdd");
+
                               DateTime currentDate =
                               selectedDate.add(Duration(days: daysToAdd));
                               int dayOfWeek = currentDate.weekday;
-                              print("dayOfWeek:$dayOfWeek");
+
 
                               int dayIndexInWeek = (dayOfWeek) % 7;
                               bool isSelectedDate =state.selectedDates.year == currentDate.year &&
                                   state.selectedDates.month == currentDate.month &&
                                   state.selectedDates.day == currentDate.day;
-                              print("isSelected:${state.dateList}");
-                              print("isSelected:${state.selectedDates}");
-                              // currentDateSelectedIndex == dayIndexInWeek;
                               currenTime = currentDate;
-
-                              print("sateList:${currentDate}");
                               selected = dayIndexInWeek;
                               //   context.read<ContactBloc>().add(AddWeekListEvent(currentDate));
                               return GestureDetector(
@@ -322,7 +311,6 @@ class _ContactPageState extends State<ContactPage>
                                   context.read<ContactBloc>().add(
                                       GetAllContractsEvent(
                                           dateTime: currentDate));
-                                  print("dateee:${currentDate}");
                                   now = currentDate;
                                 },
                                 child: Container(
@@ -351,7 +339,7 @@ class _ContactPageState extends State<ContactPage>
                                             fontSize: 16,
                                             color: isSelectedDate
                                                 ? Colors.white
-                                                : Color(0xFFD1D1D1)),
+                                                : const Color(0xFFD1D1D1)),
                                       ),
                                       const SizedBox(
                                         height: 7,
@@ -363,7 +351,7 @@ class _ContactPageState extends State<ContactPage>
                                             fontWeight: FontWeight.w700,
                                             color: isSelectedDate
                                                 ? Colors.white
-                                                : Color(0xFFD1D1D1)),
+                                                : const Color(0xFFD1D1D1)),
                                       ),
                                       const SizedBox(
                                           width: 15,
@@ -392,7 +380,7 @@ class _ContactPageState extends State<ContactPage>
                                 width: 66,
                                 height: 74,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 18,
                               ),
                               Text(
@@ -424,7 +412,7 @@ class _ContactPageState extends State<ContactPage>
                                   label: (index, v) => v,
                                   tooltip: (i, v) => v),
                               choiceStyle: C2ChipStyle.filled(
-                                  disabledStyle: C2ChipStyle(
+                                  disabledStyle: const C2ChipStyle(
                                       backgroundColor: Colors.transparent),
                                   selectedStyle: const C2ChipStyle(
                                       backgroundColor: AppColors.lightGreen,
@@ -436,10 +424,6 @@ class _ContactPageState extends State<ContactPage>
                         Builder(builder: (context) {
                           if (state.chipChoiceEnum == true) {
                             return Builder(builder: (context) {
-                              // if(selectedDate.weekday==7){
-                              //   print("selectedDate:${selectedDate.weekday}");
-                              //   state.list.length=0;
-                              // }
                               return SliverList(
                                   delegate: SliverChildBuilderDelegate(
                                     childCount: state.list.length,
@@ -479,8 +463,6 @@ class _ContactPageState extends State<ContactPage>
                           if (state.list.length >= 10) {
                             if (state.list.length % 10 == 0 &&
                                 state.chipChoiceEnum == true) {
-                              print(
-                                  "listttttttt:${state.allContractList.length}");
                               return state.isLoading
                                   ? SliverToBoxAdapter(
                                   child: Padding(
@@ -488,7 +470,7 @@ class _ContactPageState extends State<ContactPage>
                                     child: Center(
                                         child: Text(
                                           "Loading${'.' * (_animation.value + 1)}",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: AppColors.darkGreen),
                                         )),
                                   ))

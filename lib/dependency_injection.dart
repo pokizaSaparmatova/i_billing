@@ -31,11 +31,6 @@ Future<void> init() async {
     savedContract: sl(),
 
   ));
-  sl.registerFactory(() => SavedBloc(
-    getAllContract: sl(),
-    getSavedList: sl()
-
-  ));
 
 
   // Use cases

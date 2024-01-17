@@ -3,17 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ibilling/assets/app_colors.dart';
+import 'package:ibilling/assets/app_constans.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/new_page/bloc/add_page_bloc.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/saved_filter_page/saved_filter_page.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/saved_page/bloc/saved_bloc.dart';
-import '../../../../../assets/app_colors.dart';
-import '../../../../../dependency_injection.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import '../../widgets/contact_item_widget.dart';
-import '../contact_page/bloc/contact_bloc.dart';
-import '../filter_page/filter_page.dart';
-import '../new_page/bloc/add_page_bloc.dart';
-import '../saved_filter_page/saved_filter_page.dart';
-import '../saved_search_page/saved_search_page.dart';
-import '../search_page/search_page.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/saved_search_page/saved_search_page.dart';
+import 'package:ibilling/features/ibilling/presintation/widgets/contact_item_widget.dart';
+import 'package:ibilling/generated/locale_keys.g.dart';
+
 
 class SavedPage extends StatefulWidget {
   const SavedPage({Key? key}) : super(key: key);
@@ -23,37 +21,7 @@ class SavedPage extends StatefulWidget {
 }
 
 class _SavedPageState extends State<SavedPage> {
-  Color getStatusColor(String status) {
-    switch (status) {
-      case "Paid":
-        return Color(0xFF49B7A5);
-      case "In process":
-        return Color(0xFFFDAB2A);
-      case "Rejected by Payme":
-        return Color(0xFFFF426D);
-      case "Rejected by IQ":
-        return Color(0xFFFF426D);
-      default:
-        return Colors.black;
-    }
-  }
-
   String appBarTitle = '';
-
-  Color getContainerColor(String status) {
-    switch (status) {
-      case "Paid":
-        return Color(0xFF49B7A5).withOpacity(.4);
-      case "In process":
-        return Color(0xFFFDAB2A).withOpacity(.4);
-      case "Rejected by Payme":
-        return Color(0xFFFF426D).withOpacity(.4);
-      case "Rejected by IQ":
-        return Color(0xFFFF426D).withOpacity(.4);
-      default:
-        return Colors.black;
-    }
-  }
 
   // Method to update the title
   void updateAppBarTitle() {
@@ -87,11 +55,11 @@ class _SavedPageState extends State<SavedPage> {
     return BlocBuilder<SavedBloc, SavedState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor:AppColors.black,
           appBar: AppBar(
             title: Text(
               appBarTitle,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color:AppColors.white),
             ),
             backgroundColor: AppColors.darkest,
             titleSpacing: 0,
@@ -108,7 +76,7 @@ class _SavedPageState extends State<SavedPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SavedFilterPage()),
+                          builder: (context) => const SavedFilterPage()),
                     );
                   },
                   child: SvgPicture.asset("assets/icons/filtr.svg")),
@@ -119,7 +87,7 @@ class _SavedPageState extends State<SavedPage> {
                 height: 18,
                 child: VerticalDivider(
                   thickness: 2,
-                  color: Colors.white,
+                  color: AppColors.white,
                 ),
               ),
               const SizedBox(
@@ -131,7 +99,7 @@ class _SavedPageState extends State<SavedPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SavedSearchPage()),
+                          builder: (context) => const SavedSearchPage()),
                     );
                   },
                   child: SvgPicture.asset("assets/icons/seatch.svg")),
@@ -144,11 +112,11 @@ class _SavedPageState extends State<SavedPage> {
             color: AppColors.darkGreen,
             onRefresh: _refresh,
             child: state.pageStatuses == PageStatuses.loading
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : SingleChildScrollView(
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         ListView.builder(
@@ -159,9 +127,9 @@ class _SavedPageState extends State<SavedPage> {
                               return ContractItem(
                                 number: state.savedList[index].number,
                                 status: state.savedList[index].status,
-                                textColor: getStatusColor(
+                                textColor: AppConstants.getContainerColor(
                                     state.savedList[index].status),
-                                containerColor: getContainerColor(
+                                containerColor: AppConstants.getContainerColor(
                                     state.savedList[index].status),
                                 name: state.savedList[index].name,
                                 date:

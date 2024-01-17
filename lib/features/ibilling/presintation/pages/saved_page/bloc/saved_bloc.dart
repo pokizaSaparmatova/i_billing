@@ -27,13 +27,11 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
           (failure) => emit(state.copyWith(
               pageStatuses: PageStatuses.fail,
               errorMessage: _mapFailureMessage(failure))), (contact) async {
-        print("savedList:${contact}");
         emit(state.copyWith(
             pageStatuses: PageStatuses.success, savedList: contact));
       });
     });
     on<GetSearchSavedListEvent>((event, emit) async {
-      print("SEACHHHHHHH}");
       List<ContactModel> searchList = [];
       emit(state.copyWith(pageStatuses: PageStatuses.loading));
       final failureOrSuccess = await getSavedList(NoParams());
@@ -41,7 +39,6 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
           (failure) => emit(state.copyWith(
               pageStatuses: PageStatuses.fail,
               errorMessage: _mapFailureMessage(failure))), (contact) async {
-            print("saveeeeeeee:${contact.length}");
         if (contact.isNotEmpty) {
           for (int i = 0; i < contact.length; i++) {
             if (contact[i]
@@ -52,7 +49,6 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
             }
           }
         }
-        print("newLISSSSSTTTTT:${contact.length}");
         emit(state.copyWith(
             pageStatuses: PageStatuses.success,
             savedList: searchList,
@@ -60,14 +56,15 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
       });
     });
     on<GetFilterSavedListEvent>((event, emit) async {
-      print("filterblocc}");
       List<ContactModel> newList=[];
       emit(state.copyWith(pageStatuses: PageStatuses.loading));
       final failureOrSuccess = await getSavedList(NoParams());
+
       failureOrSuccess.fold(
               (failure) => emit(state.copyWith(
               pageStatuses: PageStatuses.fail,
               errorMessage: _mapFailureMessage(failure))), (contact) async {
+        print("IIII:${contact}");
         newList = contact
             .where((contactItem) =>
         event.enumList
@@ -75,16 +72,15 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
             contactItem.date.isAfter(event.startDate) &&
             contactItem.date.isBefore(event.endDate))
             .toList();
-
-        print('eventList:${event.enumList}');
-        print("date:${event.endDate}");
-        print("date:${event.startDate}");
-        print("filterLISSSSSTTTTT:${newList.length}");
         emit(state.copyWith(
           pageStatuses: PageStatuses.success,
           savedList: newList,
         ));
+        print("IIIIP:${newList}");
+        print("IIIIP:${event.startDate}");
+        print("IIIIP:${event.endDate}");
       });
+
     });
   }
 

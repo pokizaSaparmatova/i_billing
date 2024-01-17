@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -32,22 +33,20 @@ class NavItemWidget extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          navBar.title,
+          navBar.title.tr(),
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
           maxLines: 1,
           style: isSelected
-              ?  TextStyle(
+              ?  const TextStyle(
               color: Color(0xFFF2F2F2),
               fontSize: 10,
-              fontFamily: 'Ubuntu',
               fontWeight: FontWeight.w700,
               height: 0,
             )
-              : TextStyle(
+              : const TextStyle(
             color: Color(0xFFA6A6A6),
             fontSize: 10,
-            fontFamily: 'Ubuntu',
             fontWeight: FontWeight.w500
           ),
         ),
