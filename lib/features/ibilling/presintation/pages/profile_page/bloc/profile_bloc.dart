@@ -15,8 +15,9 @@ part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   var localDataSource=sl<LocalDataSource>();
-  ProfileBloc({required this.localDataSource}) : super(ProfileState()) {
+  ProfileBloc({required this.localDataSource}) : super(const ProfileState()) {
     on<SelectedLanguage>((event,emit){
+      print("PPPPPPPP:${event.selectedLanguage}");
       emit(state.copyWith(selectedlanguge: event.selectedLanguage));
     });
     on<LoadLanguage>((event,emit)async{

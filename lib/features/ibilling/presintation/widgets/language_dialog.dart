@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../dependency_injection.dart';
 
 class LanguageDialog extends StatefulWidget {
+
   const LanguageDialog({Key? key}) : super(key: key);
 
   @override
@@ -21,20 +22,8 @@ List<String> langCode=["uz","en"];
 
 class _LanguageDialogState extends State<LanguageDialog> {
   String selectedLanguage = options[0];
- String lang="en";
- String applyLang="";
-
-  // Future<void> loadSelectedLanguage() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     selectedLanguage = prefs.getString('selectedLanguage') ?? options[0];
-  //   });
-  // }
-  //
-  // Future<void> saveSelectedLanguage(String languageCode) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.setString('selectedLanguage', languageCode);
-  // }
+  String lang="en";
+  String applyLang="";
 
   @override
   void initState() {
@@ -49,7 +38,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
       builder: (context, state) {
         return Dialog(
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             elevation: 0,
             backgroundColor: AppColors.dark,
             insetPadding: const EdgeInsets.only(left: 24, right: 24),
@@ -80,7 +69,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
                           Container(
                             alignment: Alignment.centerLeft,
                             decoration:
-                                const BoxDecoration(shape: BoxShape.circle),
+                            const BoxDecoration(shape: BoxShape.circle),
                             child: ClipOval(
                               child: SizedBox.fromSize(
                                 size: const Size.fromRadius(12),
@@ -109,13 +98,13 @@ class _LanguageDialogState extends State<LanguageDialog> {
                       Radio(
                           value: langCode[1],
                           fillColor: MaterialStateColor.resolveWith(
-                              (states) => AppColors.lightGreen),
+                                  (states) => AppColors.lightGreen),
                           groupValue: state.selectedlanguge,
                           onChanged: (newOptions) {
                             context
                                 .read<ProfileBloc>()
                                 .add(SelectedLanguage(newOptions!));
-                           applyLang=langCode[1];
+                            applyLang=langCode[1];
                             // context.read<ProfileBloc>().add(ChangeOptions(newOptions!));
                           })
                     ],
@@ -128,7 +117,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
                           Container(
                             alignment: Alignment.centerLeft,
                             decoration:
-                                const BoxDecoration(shape: BoxShape.circle),
+                            const BoxDecoration(shape: BoxShape.circle),
                             child: ClipOval(
                               child: SizedBox.fromSize(
                                 size: const Size.fromRadius(12),
@@ -155,9 +144,9 @@ class _LanguageDialogState extends State<LanguageDialog> {
                       ),
                       Radio(
 
-                        value: langCode[0],
+                          value: langCode[0],
                           fillColor: MaterialStateColor.resolveWith(
-                              (states) => AppColors.lightGreen),
+                                  (states) => AppColors.lightGreen),
                           groupValue: state.selectedlanguge,
                           //state.selectedLanguage,
                           onChanged: (newOptions) {
@@ -206,10 +195,11 @@ class _LanguageDialogState extends State<LanguageDialog> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          context
-                              .read<ProfileBloc>()
-                              .add(ChangeOptions(context, applyLang));
-                          Navigator.of(context).pop();
+                          context.setLocale(Locale(applyLang));
+                          // context
+                          //     .read<ProfileBloc>()
+                          //     .add(ChangeOptions(context, applyLang));
+                          // Navigator.of(context).pop();
                         },
                         child: Container(
                           decoration: BoxDecoration(

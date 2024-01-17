@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/contact_page/contact_page.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/history_page/history_page.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/new_page/new_contact.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/new_page/new_invoice.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/new_page/new_page.dart';
-import '../features/ibilling/presintation/pages/history_page/history_page.dart';
-import '../features/ibilling/presintation/pages/profile_page/profile_page.dart';
-import '../features/ibilling/presintation/pages/saved_page/saved_page.dart';
-import 'nav_item_enum.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/profile_page/profile_page.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/saved_page/saved_page.dart';
+import 'package:ibilling/features/navigation/nav_item_enum.dart';
 
 class TabNavigatorRoutes {
   static const String root = '/';

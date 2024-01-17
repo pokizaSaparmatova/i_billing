@@ -2,12 +2,15 @@ import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../assets/app_colors.dart';
-import '../features/ibilling/presintation/widgets/create_dialog.dart';
-import 'nav_bar.dart';
-import 'nav_bar_entity.dart';
-import 'nav_item_enum.dart';
-import 'navigator.dart';
+import 'package:ibilling/assets/app_colors.dart';
+import 'package:ibilling/features/ibilling/presintation/widgets/create_dialog.dart';
+import 'package:ibilling/features/navigation/nav_bar.dart';
+import 'package:ibilling/features/navigation/nav_bar_entity.dart';
+import 'package:ibilling/features/navigation/nav_item_enum.dart';
+import 'package:ibilling/features/navigation/navigator.dart';
+
+import '../../generated/locale_keys.g.dart';
+
 
 
 class HomeScreen extends StatefulWidget {
@@ -89,37 +92,37 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
   Widget build(BuildContext context) {
     labels = [
       NavBar(
-          title:"contacts".tr(),
+          title:  LocaleKeys.contacts,
           id: 0,
           icon:  "assets/icons/contact_unpaid.svg",
           selectedIcon: 'assets/icons/sel_contract.svg'),
       NavBar(
-          title: "history".tr(),
+          title:    LocaleKeys.history,
           id: 1,
           icon: "assets/icons/history.svg",
           selectedIcon: 'assets/icons/sel_history.svg'),
       NavBar(
-          title:  "New".tr(),
+          title:     LocaleKeys.New,
           id: 2,
           icon:"assets/icons/new.svg",
           selectedIcon: 'assets/icons/sel_add.svg'),
       NavBar(
-          title:  "saved".tr(),
+          title:  LocaleKeys.saved,
           id: 3,
           icon: "assets/icons/saved.svg",
           selectedIcon: 'assets/icons/sel_saved.svg'),
       NavBar(
-          title: "profile".tr(),
+          title: LocaleKeys.profile,
           id: 4,
           icon: "assets/icons/profile.svg",
           selectedIcon: 'assets/icons/sel_profile.svg'),
       NavBar(
-          title: "newContract".tr(),
+          title: "newContract",
           id: 5,
           icon: "assets/icons/profile.svg",
           selectedIcon: 'assets/icons/sel_profile.svg'),
       NavBar(
-          title: "newInvoice".tr(),
+          title: "newInvoice",
           id: 6,
           icon: "assets/icons/profile.svg",
           selectedIcon: 'assets/icons/sel_profile.svg'),

@@ -3,26 +3,24 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
+import 'package:ibilling/dependency_injection.dart';
 import 'package:ibilling/features/ibilling/data/datasource/local_datasource/local_datasource.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/add_contract.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/get_all_contracts.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/get_contact.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/get_next_contract.dart';
-import 'package:ibilling/features/ibilling/domain/usecases/get_saved_list.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/get_search_list.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/get_single_list_contract.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/remove_contract.dart';
 import 'package:ibilling/features/ibilling/domain/usecases/saved_contract.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/contact_page/bloc/contact_bloc.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/new_page/bloc/add_page_bloc.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/profile_page/bloc/profile_bloc.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/saved_page/bloc/saved_bloc.dart';
-import 'package:ibilling/navigation/home.dart';
+import 'package:ibilling/features/navigation/home.dart';
+import 'package:ibilling/firebase_options.dart';
+import 'package:ibilling/generated/codegen_loader.g.dart';
 
-import 'features/ibilling/presintation/pages/contact_page/bloc/contact_bloc.dart';
-import 'features/ibilling/presintation/pages/profile_page/bloc/profile_bloc.dart';
-import 'firebase_options.dart';
-
-import 'dependency_injection.dart';
-import 'generated/codegen_loader.g.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -85,7 +83,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: HomeScreen(),
+          home: const HomeScreen(),
         ),
       ),
     );

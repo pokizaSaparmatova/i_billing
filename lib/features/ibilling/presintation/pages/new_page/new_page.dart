@@ -4,14 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ibilling/assets/app_colors.dart';
 import 'package:ibilling/core/utils/enums/entity_enum.dart';
 import 'package:ibilling/core/utils/enums/status_contact_enum.dart';
-import 'package:ibilling/core/utils/enums/status_contact_enum.dart';
-import 'package:ibilling/features/ibilling/presintation/pages/contact_page/contact_page.dart';
 import 'package:ibilling/features/ibilling/presintation/pages/new_page/bloc/add_page_bloc.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/new_page/new_contact.dart';
+import 'package:ibilling/features/ibilling/presintation/pages/new_page/new_invoice.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
-import '../../../../../assets/app_colors.dart';
-import '../../../../../dependency_injection.dart';
 
 class NewPage extends StatefulWidget {
   final Function() onTapSave;
@@ -131,60 +130,62 @@ class _NewPageState extends State<NewPage> {
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   ...Entities.values
-                                                      .map((e) =>
-                                                          GestureDetector(
-                                                            onTap: () {
-                                                              isMenuOpen.value =
-                                                                  false;
-                                                              selectedText =
-                                                                  e.name;
-                                                              print(
-                                                                  "PPPPPP:${e.name}");
-                                                              print(
-                                                                  "PPPPPP:${selectedText}");
-                                                            },
-                                                            child: Container(
-                                                              width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width *
-                                                                  0.92,
-                                                              color: AppColors
-                                                                  .dark,
-                                                              padding:
-                                                                  const EdgeInsets
+                                                      .map(
+                                                          (e) =>
+                                                              GestureDetector(
+                                                                onTap: () {
+                                                                  isMenuOpen
+                                                                          .value =
+                                                                      false;
+                                                                  selectedText =
+                                                                      e.name;
+                                                                  print(
+                                                                      "PPPPPP:${e.name}");
+                                                                  print(
+                                                                      "PPPPPP:${selectedText}");
+                                                                },
+                                                                child:
+                                                                    Container(
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.92,
+                                                                  color:
+                                                                      AppColors
+                                                                          .dark,
+                                                                  padding: const EdgeInsets
                                                                       .symmetric(
                                                                       horizontal:
                                                                           24,
                                                                       vertical:
                                                                           15),
-                                                              child: Row(
-                                                                children: [
-                                                                  Text(
-                                                                    e.name,
-                                                                    style:
-                                                                        const TextStyle(
-                                                                      color: Color(
-                                                                          0xFFF1F1F1),
-                                                                      fontSize:
-                                                                          14,
-                                                                    ),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Text(
+                                                                        e.name,
+                                                                        style:
+                                                                            const TextStyle(
+                                                                          color:
+                                                                              Color(0xFFF1F1F1),
+                                                                          fontSize:
+                                                                              14,
+                                                                        ),
+                                                                      ),
+                                                                      const Spacer(),
+                                                                      SvgPicture
+                                                                          .asset(
+                                                                        "assets/icons/radio.svg",
+                                                                        colorFilter: ColorFilter.mode(
+                                                                            e.name == selectedText
+                                                                                ? AppColors.lightGreen
+                                                                                : Colors.grey,
+                                                                            BlendMode.srcIn),
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                  const Spacer(),
-                                                                 SvgPicture
-                                                                        .asset(
-                                                                      "assets/icons/radio.svg",
-                                                                      colorFilter: ColorFilter.mode(
-                                                                          e.name==selectedText
-                                                                              ? AppColors.lightGreen
-                                                                              : Colors.grey,
-                                                                         BlendMode.srcIn
-                                                                         ),
-                                                                    ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ))
+                                                                ),
+                                                              ))
                                                       .toList()
                                                 ],
                                               ),
@@ -515,7 +516,7 @@ class _NewPageState extends State<NewPage> {
                                                                           .asset(
                                                                         "assets/icons/radio.svg",
                                                                         colorFilter: ColorFilter.mode(
-                                                                            e.name==selectedStatus
+                                                                            e.name == selectedStatus
                                                                                 ? AppColors.lightGreen
                                                                                 : Colors.grey,
                                                                             BlendMode.srcIn),
@@ -608,7 +609,8 @@ class _NewPageState extends State<NewPage> {
                                                           _textEditingController3
                                                               .text,
                                                       status: selectedStatus,
-                                                      date: DateTime.now(), onSuccess: () {  }));
+                                                      date: DateTime.now(),
+                                                      onSuccess: () {}));
                                             },
                                             child: Container(
                                               width: double.infinity,
@@ -650,8 +652,7 @@ class _NewPageState extends State<NewPage> {
                           ),
                         ),
                       );
-                    }
-                    else if (state.title == "invoice") {
+                    } else if (state.title == "invoice") {
                       return Padding(
                         padding:
                             const EdgeInsets.only(right: 16, left: 16, top: 20),
@@ -979,3 +980,4 @@ class _NewPageState extends State<NewPage> {
         ),
       );
 }
+

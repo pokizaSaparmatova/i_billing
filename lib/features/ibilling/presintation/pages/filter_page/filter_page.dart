@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,7 +49,7 @@ class _FilterPageState extends State<FilterPage> {
                 appBar:
                 AppBar(
                   backgroundColor: AppColors.darkest,
-                  title: Text(
+                  title: const Text(
                     "Filter",
                     style: TextStyle(color: Colors.white),
                   ),
@@ -95,7 +95,6 @@ class _FilterPageState extends State<FilterPage> {
                                     onTap: () {
                                       setState(() {
                                         isPaid = !isPaid;
-                                        print("ispaid:${isPaid}");
                                       });
                                     },
                                     child: isPaid
@@ -129,7 +128,6 @@ class _FilterPageState extends State<FilterPage> {
                                     onTap: () {
                                       setState(() {
                                         isRejIQ = !isRejIQ;
-                                        print("ispaid:${isRejIQ}");
                                       });
                                     },
                                     child: isRejIQ
@@ -168,7 +166,6 @@ class _FilterPageState extends State<FilterPage> {
                                     onTap: () {
                                       setState(() {
                                         isInProcc = !isInProcc;
-                                        print("ispaid:${isInProcc}");
                                       });
                                     },
                                     child: isInProcc
@@ -202,7 +199,6 @@ class _FilterPageState extends State<FilterPage> {
                                     onTap: () {
                                       setState(() {
                                         isRejPayme = !isRejPayme;
-                                        print("ispaid:${isRejPayme}");
                                       });
                                     },
                                     child: isRejPayme
@@ -431,7 +427,7 @@ class _FilterPageState extends State<FilterPage> {
                                   decoration: BoxDecoration(
                                       color: AppColors.darkGreen,
                                       borderRadius: BorderRadius.circular(6)),
-                                  child: Center(
+                                  child: const Center(
                                       child: Text(
                                     textAlign: TextAlign.center,
                                     "Apply filters",
